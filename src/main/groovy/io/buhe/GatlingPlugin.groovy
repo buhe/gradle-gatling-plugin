@@ -6,8 +6,6 @@ import org.gradle.api.Project
 class GatlingPlugin implements Plugin<Project> {
     void apply(Project project) {
 
-//        project.extensions.create("dateAndTime", GatlingPluginExtension)
-
         project.task('gatling').dependsOn("compileTestScala") << {
             println "Current time is " + new Date();
 
@@ -39,9 +37,5 @@ class GatlingPlugin implements Plugin<Project> {
             logger.lifecycle(" ---- Done executing all Gatling scenarios ----")
 
         }
-//
-//        project.tasks.create('showDate') << {
-//            println "Current date is " + new Date().format(project.dateAndTime.dateFormat)
-//        }
     }
 }

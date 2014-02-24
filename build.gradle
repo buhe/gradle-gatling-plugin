@@ -1,6 +1,6 @@
 apply plugin: 'groovy'
 apply plugin: 'maven'
-version = '1.0'
+version = '0.0.1'
 group = 'io.buhe.gradle'
 archivesBaseName = 'gatling'
 apply plugin: 'idea'
@@ -10,6 +10,12 @@ dependencies {
     compile gradleApi()
     groovy localGroovy()
 }
+uploadArchivesToLocal {
+    repositories.mavenDeployer {
+        repository(url: 'file:../lib')
+    }
+}
+
 uploadArchives {
     repositories.mavenDeployer {
         repository(url: 'file:../lib')
