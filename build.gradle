@@ -4,6 +4,17 @@ version = '0.0.1'
 group = 'io.buhe.gradle'
 archivesBaseName = 'gatling'
 apply plugin: 'idea'
+apply plugin: 'nexus'
+buildscript {
+    repositories {
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'org.gradle.api.plugins:gradle-nexus-plugin:0.7'
+    }
+}
+
 repositories.mavenCentral()
 
 dependencies {
@@ -16,8 +27,41 @@ uploadArchivesToLocal {
     }
 }
 
-uploadArchives {
-    repositories.mavenDeployer {
-        repository(url: 'file:../lib')
+
+modifyPom {
+    project {
+        name 'Gradle gatling plugin'
+        description 'Gradle gatling plugin.'
+        url 'https://github.com/buhe/gatling-gradle-plugins'
+        inceptionYear '2014'
+
+        scm {
+            url 'https://github.com/buhe/gatling-gradle-plugins'
+            connection 'scm:https://github.com/buhe/gatling-gradle-plugins.git'
+            developerConnection 'scm:git://github.com/buhe/gatling-gradle-plugins.git'
+        }
+
+        licenses {
+            license {
+                name 'The Apache Software License, Version 2.0'
+                url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                distribution 'repo'
+            }
+        }
+
+        developers {
+            developer {
+                id 'buhe'
+                name 'buhe'
+                email 'bugu1986@126.com'
+            }
+        }
     }
+}
+
+nexus {
+    attachSources = false
+    attachTests = true
+    attachJavadoc = false
+    sign = true
 }
