@@ -1,5 +1,5 @@
 # Install
-======================
+--------------------------
 
 execute:
 
@@ -19,7 +19,7 @@ put lib directory into your project directory,add configuration to your build.gr
 	}
 
 # Configuration
-======================
+--------------------------
 
 	apply plugin: 'gatling'
     gatling {
@@ -31,6 +31,6 @@ put lib directory into your project directory,add configuration to your build.gr
 exclude is black list,include is white list,support regx.
 
 #Tasks
-======================
+--------------------------
 
 	:gatling     execute all match gatling script.
