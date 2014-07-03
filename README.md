@@ -1,36 +1,32 @@
 # Install
---------------------------
 
-execute:
+1. Execute:
 
-	gradle uploadArchives
+	gradle install
 
-put lib directory into your project directory,add configuration to your build.gradle
+2. Add the following to your `build.gradle`:
 
 	buildscript {
-	    repositories {
-	        maven {
-	            url 'file:lib'
-	        }
-	    }
-	    dependencies {
-	        classpath 'io.buhe.gradle:gatling:0.0.1'
-	    }
+		dependencies {
+			classpath 'io.buhe.gradle:gatling:0.0.1'
+		}
 	}
 
+
 # Configuration
---------------------------
 
 	apply plugin: 'gatling'
-    gatling {
-        exclude ('^basic.*')
-        include ('^basic.Github.*')
-    }
+
+	gatling {
+		exclude '^basic.*'
+		include '^basic.Github.*'
+	}
 
 
-exclude is black list,include is white list,support regx.
+exclude is a black list, include is a white list.  Both support regex.
+
 
 #Tasks
---------------------------
 
-	:gatling     execute all match gatling script.
+	:gatling	 execute all matching gatling scripts
+
