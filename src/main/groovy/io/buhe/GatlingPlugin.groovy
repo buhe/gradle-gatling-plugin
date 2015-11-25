@@ -70,12 +70,12 @@ class GatlingPlugin implements Plugin<Project> {
                             .replace(File.separator, '.')
                     if(check(gatlingScenarioClass,blackListPattern,whiteListPattern)){
                         logger.debug("Tranformed file ${file} into scenario class ${gatlingScenarioClass}")
+                        def report = project.buildDir.getAbsolutePath()+'/reports/gatling';
                         project.javaexec {
                             // I do not use this so
-                            main = 'com.excilys.ebi.gatling.app.Gatling'
+                            main = 'io.gatling.app.Gatling'
                             classpath = project.sourceSets.test.output + project.sourceSets.test.runtimeClasspath
-                            report = project.buildDir.getAbsolutePath()+'/reports/gatling';
-                            args  '-sbf',
+                            args  '-bf',
                                     project.sourceSets.test.output.classesDir,
                                     '-s',
                                     gatlingScenarioClass,
@@ -89,7 +89,7 @@ class GatlingPlugin implements Plugin<Project> {
             }
 
             logger.lifecycle(" ---- Done executing all Gatling scenarios ----")
-
         }
     }
 }
+
