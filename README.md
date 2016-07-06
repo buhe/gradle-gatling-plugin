@@ -26,11 +26,17 @@ put lib directory into your project directory,add configuration to your build.gr
 	    exclude = '.*'
 	    include = '^io.test.simulations.*'
 	    breakOnFailure = false
+            ignoreFailures = false
 	}
 
 
 exclude is black list, include is white list, regular expressions are supported
 both exclude and include may contain a multiple comma separated regexps
+
+breakOnFailures specifies if test execution should be interrupted after first
+failure
+
+ignoreFailures specifies if failed test results should still let the task pass
 
 #Tasks
 --------------------------

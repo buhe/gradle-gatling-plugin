@@ -5,4 +5,5 @@ class GatlingPluginExtension {
     def exclude = "";
     def systemProperties = [:];
     def breakOnFailure = false;
+    def ignoreFailures = false;
 }
