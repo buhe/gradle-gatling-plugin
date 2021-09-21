@@ -38,7 +38,7 @@ failure
 
 ignoreFailures specifies if failed test results should still let the task pass
 
-#Tasks
+# Tasks
 --------------------------
 
 	:gatling     execute all match gatling script
